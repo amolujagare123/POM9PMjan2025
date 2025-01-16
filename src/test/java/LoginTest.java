@@ -1,0 +1,21 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class LoginTest {
+
+    @Test
+    public void loginTest()
+    {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://localhost/ip");
+
+        Login login = new Login(driver);
+
+        login.setUsername("amolujagare@gmail.com");
+        login.setPassword("admin123");
+        login.clickLogin();
+
+    }
+}
