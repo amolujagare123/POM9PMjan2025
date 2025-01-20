@@ -1,7 +1,7 @@
-package clients;
+package pages.clients;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -54,7 +54,7 @@ public class AddClient {
 
     // Constructor to initialize WebDriver and WebElements
     public AddClient(WebDriver driver) {
-
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -118,6 +118,50 @@ public class AddClient {
     // Method to save the client details
     public void saveClient() {
         save.click();
+    }
+
+    @FindBy(id="select2-client_language-container")
+    WebElement languageContainer;
+
+    @FindBy (xpath = "//*[@role='searchbox']")
+    WebElement searchBox;
+
+    WebDriver driver;
+
+    public void setLanguage(String language) {
+        languageContainer.click();
+        searchBox.sendKeys(language);
+       // searchBox.sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//li[normalize-space()='"+language+"']")).click();
+    }
+
+    @FindBy (id="select2-client_country-container")
+    WebElement countryContainer;
+
+    public void setCountry(String country) {
+        countryContainer.click();
+        searchBox.sendKeys(country);
+        driver.findElement(By.xpath("//li[normalize-space()='"+country+"']")).click();
+    }
+
+    @FindBy (id = "select2-client_gender-container")
+    WebElement genderContainer;
+
+    public void setGender(String gender) {
+        genderContainer.click();
+        driver.findElement(By.xpath("//li[normalize-space()='"+gender+"']")).click();
+    }
+
+    @FindBy (xpath = "//input[@id='client_birthdate']")
+    WebElement birthdate;
+
+    public void setBirthdate(String setDate)
+    {
+       // birthdate.sendKeys(setDate);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+setDate+"')" , birthdate);
+
     }
 
 }
