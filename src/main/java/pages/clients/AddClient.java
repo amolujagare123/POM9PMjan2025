@@ -142,7 +142,7 @@ public class AddClient {
         countryContainer.click();
         searchBox.sendKeys(country);
         driver.findElement(By.xpath("//li[normalize-space()='"+country+"']")).click();
-    }
+    } //
 
     @FindBy (id = "select2-client_gender-container")
     WebElement genderContainer;

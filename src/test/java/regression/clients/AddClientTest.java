@@ -18,7 +18,7 @@ public class AddClientTest {
     {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://localhost/ip");
+        driver.get("http://localhost/ip");//
 
          Login login = new Login(driver);
 
