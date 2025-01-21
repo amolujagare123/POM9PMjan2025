@@ -1,5 +1,6 @@
 package regression.clients;
 
+import Utility.DoLogin;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
@@ -9,24 +10,8 @@ import pages.Menu;
 import pages.clients.AddClient;
 
 
-public class AddClientTest {
+public class AddClientTest extends DoLogin {
 
-    WebDriver driver;
-
-    @BeforeClass
-    public void loginTest()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://localhost/ip");//
-
-         Login login = new Login(driver);
-
-        login.setUsername("amolujagare@gmail.com");
-        login.setPassword("admin123");
-        login.clickLogin();
-
-    }
 
     @Test
     public void addClientTest()
@@ -76,7 +61,7 @@ public class AddClientTest {
         addClientPage.setTaxesCode(taxCode);
 
         // Save the client details
-      //  addClientPage.saveClient();
+        addClientPage.saveClient();
 
     }
 }
