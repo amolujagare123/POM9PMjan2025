@@ -12,16 +12,25 @@ public class Login {
     */
 
     @FindBy (id ="email")
-    WebElement txtUsername;
+    public WebElement txtUsername;
 
     @FindBy(id="password")
-    WebElement txtPassword;
+    public WebElement txtPassword;
 
     @FindBy (xpath = "//*[@type='submit']")
-    WebElement btnLogin;
+    public WebElement btnLogin;
 
     @FindBy (xpath = "//*[normalize-space()='I forgot my password']")
-    WebElement forgotPassword;
+    public WebElement forgotPassword;
+
+    @FindBy (xpath = "//div[@id='login']//h1")
+    public WebElement lblLogin;
+
+    @FindBy (xpath = "//label[@for='email']")
+    public WebElement lblEmail;
+
+    @FindBy (xpath = "//label[@for='password']")
+    public WebElement lblPassword;
 
     public Login(WebDriver driver)
     {
